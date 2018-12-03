@@ -13,8 +13,8 @@ def testbench(vhdl_output_path=None):
     clk = Signal(bool(0))
     key = Signal(bool(0))
     state = Signal(bool(0))
-    message = Axis(32)
-    out = Axis(32)
+    message = Axis(4)
+    out = Axis(4)
     period = 10
     state_period = 5*period
     #clk_gen = clk_stim(clk, period=10)
