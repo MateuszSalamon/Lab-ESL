@@ -16,18 +16,20 @@ def cezar(clk, reset, out, message, state, key):
         # if state == state_t.enc:
         if state == 1:
             out.tdata.next = message.tdata + key
-            if out.tdata  > 15:
-                out.tdata.next = 0 + key
-            elif out.tdata  < 0:
-                out.tdata.next = 15+ key
+            while((out.tdata > 15)or (out.tdata <=0)):
+                if out.tdata  > 15:
+                    out.tdata.next = out.tdata - 15
+                elif out.tdata  <= 0:
+                    out.tdata.next = out.tdata + 15
         # elif state == state_t.dec:
         elif state == 0:
             # key.next= -key
             out.tdata.next = message.tdata - key
-            if out.tdata  > 15:
-                out.tdata.next = 0 - key
-            elif out.tdata  < 0:
-                out.tdata.next = 15 - key
+            while ((out.tdata > 15) or (out.tdata <= 0)):
+                if out.tdata > 15:
+                    out.tdata.next = out.tdata - 15
+                elif out.tdata <= 0:
+                    out.tdata.next = out.tdata + 15
 
         else:
             raise ValueError("Undefined state")
