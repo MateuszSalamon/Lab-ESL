@@ -16,7 +16,7 @@ def cezar(clk, reset, out, message, state, key):
         # if state == state_t.enc:
         if state == 1:
             out.tdata.next = message.tdata + key
-            while((out.tdata > 15)or (out <=0)):
+            while((out.tdata > 15)or (out.tdata <=0)):
                 if out.tdata  > 15:
                     out.tdata.next = out.tdata - 15
                 elif out.tdata  <= 0:
@@ -25,7 +25,7 @@ def cezar(clk, reset, out, message, state, key):
         elif state == 0:
             # key.next= -key
             out.tdata.next = message.tdata - key
-            while ((out.tdata > 15) or (out <= 0)):
+            while ((out.tdata > 15) or (out.tdata <= 0)):
                 if out.tdata > 15:
                     out.tdata.next = out.tdata - 15
                 elif out.tdata <= 0:
