@@ -3,5 +3,4 @@ Laboratory of ESL
 ## Use 
 * ESL_cezary.py 
 * ESL_cezar_tb.py
-* MSDC from different repository
-** MSDC** - *rar file* - [MSDC](https://github.com/MateuszSalamon/ESL_from_421)
+* MSDC.rar from - [MSDC.rar](https://github.com/MateuszSalamon/ESL_from_421)
