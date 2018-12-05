@@ -15,6 +15,8 @@ def cezar(clk, reset, out, message, state, key):
         out.tlast.next = 0
         # message.tready.next = 1
         out.tdata.next = Signal(intbv(0)[4:])
+        max_value = 2**len(message.tdata)-1
+
         # if state == state_t.enc:
         if state == 1:
             out.tdata.next = message.tdata + key.tdata

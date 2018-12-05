@@ -11,7 +11,7 @@ def testbench(vhdl_output_path=None):
 
     reset = ResetSignal(0, active=0, async=False)
     clk = Signal(bool(0))
-    key = Axis(1)
+    key = Axis(2)
     state = Signal(bool(0))
     message = Axis(4)
     out = Axis(4)
@@ -48,9 +48,9 @@ def testbench(vhdl_output_path=None):
     def drive_key():
         while True:
             yield delay(key_low_time)
-            key.tdata.next = 1
+            key.tdata.next = 2
             yield delay(key_high_time)
-            key.tdata.next = 0
+            key.tdata.next = 3
 
 
     @instance
