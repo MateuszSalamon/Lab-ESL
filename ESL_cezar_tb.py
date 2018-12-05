@@ -11,10 +11,10 @@ def testbench(vhdl_output_path=None):
 
     reset = ResetSignal(0, active=0, async=False)
     clk = Signal(bool(0))
-    key = Axis(2)
+    key = Signal(intbv(0)[4:0])
     state = Signal(bool(0))
-    message = Axis(4)
-    out = Axis(4)
+    message = Axis(32)
+    out = Axis(32)
     period = 10
     state_period = 100*period
     key_period = 200*period
@@ -48,9 +48,9 @@ def testbench(vhdl_output_path=None):
     def drive_key():
         while True:
             yield delay(key_low_time)
-            key.tdata.next = 2
+            key.next = 0
             yield delay(key_high_time)
-            key.tdata.next = 3
+            key.next = 1
 
 
     @instance
@@ -86,7 +86,7 @@ def testbench(vhdl_output_path=None):
         yield clk.negedge
         # message.tdata.next = values[i]
         yield clk.negedge
-        message.tvalid.next = 0
+        # message.tvalid.next = 0
 
     @instance
     def read_stim():

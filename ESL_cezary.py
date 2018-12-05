@@ -14,12 +14,12 @@ def cezar(clk, reset, out, message, state, key):
         out.tvalid.next = 0
         out.tlast.next = 0
         # message.tready.next = 1
-        out.tdata.next = Signal(intbv(0)[4:])
+        out.tdata.next = Signal(intbv(0)[32:])
         max_value = 2**len(message.tdata)-1
 
         # if state == state_t.enc:
         if state == 1:
-            out.tdata.next = message.tdata + key.tdata
+            out.tdata.next = message.tdata + key
             # while((out.tdata >= max_value)or (out.tdata <=min_value)):
             if out.tdata > max_value:
                 out.tdata.next = out.tdata - max_value
@@ -28,7 +28,7 @@ def cezar(clk, reset, out, message, state, key):
         # elif state == state_t.dec:
         elif state == 0:
             # key.tdata.next= -key.tdata
-            out.tdata.next = message.tdata - key.tdata
+            out.tdata.next = message.tdata - key
             # while ((out.tdata >= max_value) or (out.tdata <= min_value)):
             if out.tdata > max_value:
                 out.tdata.next = out.tdata - max_value
