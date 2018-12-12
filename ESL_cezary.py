@@ -11,8 +11,8 @@ def cezar(clk, reset, out, message, state, key):
     @always_seq(clk.posedge, reset=reset)
     def cezar_proc():
 
-        out.tvalid.next = 0
-        out.tlast.next = 0
+        #out.tvalid.next = 0
+        #out.tlast.next = 0
         # message.tready.next = 1
         out.tdata.next = Signal(intbv(0)[32:])
         max_value = 2**len(message.tdata)-1

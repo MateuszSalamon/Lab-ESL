@@ -48,10 +48,19 @@ def testbench(vhdl_output_path=None):
     def drive_key():
         while True:
             yield delay(key_low_time)
-            key.next = 0
-            yield delay(key_high_time)
             key.next = 1
-
+            yield delay(key_high_time)
+            key.next = 2
+            yield delay(key_low_time)
+            key.next = 3
+            yield delay(key_low_time)
+            key.next = 4
+            yield delay(key_low_time)
+            key.next = 5
+            yield delay(key_low_time)
+            key.next = 6
+            yield delay(key_low_time)
+            key.next = 7
 
     @instance
     def reset_gen():
@@ -93,11 +102,11 @@ def testbench(vhdl_output_path=None):
         yield reset.posedge
         yield delay(601)
         yield clk.negedge
-        out.tready.next = 1
+        #out.tready.next = 1
         while True:
             yield clk.negedge
-            if out.tlast == 1:
-                break
+            #if out.tlast == 1:
+             #   break
 
         for i in range(5):
             yield clk.negedge
