@@ -98,5 +98,5 @@ def Cezar(clk, reset, mode, key):
 #
 # print('Your translated text is:')
 #
-# print(getTranslatedMessage(mode, message, key))
+# print(getTranslatedMessage(mode, message, key)) 
 
