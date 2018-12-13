@@ -119,9 +119,12 @@ def testbench(vhdl_output_path=None):
     return instances()
 
 
+print("chuj")
+
+
 if __name__ == '__main__':
-    trace_save_path = 'C:/Users/student/Documents/MSDC/MSDC/out/testbench/'
-    vhdl_output_path = 'C:/Users/student/Documents/MSDC/MSDC/out/vhdl/'
+    trace_save_path = 'D:/Desktop/Explorer/Mateusz/Studia/Semestr 7/ESL/MSDC/out/testbench'
+    vhdl_output_path = 'D:/Desktop/Explorer/Mateusz/Studia/Semestr 7/ESL/MSDC/out/vhdl'
     os.makedirs(os.path.dirname(trace_save_path), exist_ok=True)
     os.makedirs(os.path.dirname(vhdl_output_path), exist_ok=True)
 
